@@ -10,12 +10,16 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <HeroCarousel />
-      <DecorativeSeparator />
-      <PortfolioGrid />
-      <DecorativeSeparator />
-      <ContactSection />
-      <Footer />
+      <div>
+        <div className="pt-16"> {/* Account for the main header height */}
+          <HeroCarousel />
+        </div>
+        <DecorativeSeparator />
+        <PortfolioGrid />
+        <DecorativeSeparator />
+        <ContactSection />
+        <Footer />
+      </div>
     </div>
   );
 };

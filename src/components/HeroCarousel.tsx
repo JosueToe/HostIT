@@ -84,7 +84,7 @@ const HeroCarousel = () => {
   };
 
   return (
-    <section id="hero" className="hero-coverflow mt-16">
+    <section id="hero" className="hero-coverflow">
       {slides.map((slide, index) => (
         <div key={slide.id} id={slide.id} className="overlay-target">
           <div className="overlay-content">

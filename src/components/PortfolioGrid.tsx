@@ -72,38 +72,37 @@ const PortfolioGrid = () => {
   );
 
   return (
-    <section id="portfolio" className="pt-8 pb-12 bg-[hsl(220,30%,8%)]">
+    <section id="portfolio" className="pt-16 pb-20 bg-gray-50">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Premium <span className="text-blue-400">Website</span> Collection
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 text-gray-900">
+            Our <span className="animated-gradient">Portfolio</span> & Payments
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto font-semibold">
-            Choose from our professionally designed websites with premium hosting included. 
-            All sites come with 24/7 support, lightning-fast performance, and regular updates.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-body leading-relaxed">
+            Explore our portfolio of professionally designed websites we've created and hosted for real customers. 
+            Existing customers can manage their subscriptions and payments here. See what we've built for others and get inspired for your own project.
           </p>
         </div>
 
         {/* Search Bar */}
         <div className="relative max-w-lg mx-auto mb-16">
           <Input
-            placeholder="Search..."
+            placeholder="Search portfolio or find your site..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-4 pr-12 py-4 text-lg bg-[hsl(220,25%,12%)] text-white placeholder:text-white/60 rounded-full w-full transition-all duration-200 focus:ring-2 focus:ring-primary/50"
-            style={{ border: '2px solid white' }}
+            className="pl-6 pr-12 py-4 text-lg bg-white text-gray-900 placeholder:text-gray-400 rounded-full w-full transition-all duration-200 focus:ring-2 focus:ring-blue-500/50 border-2 border-gray-200 focus:border-blue-500 shadow-lg"
           />
-          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-primary rounded-full p-2 cursor-pointer hover:bg-primary/90 transition-all duration-200 hover:scale-110">
-            <Search className="text-primary-foreground" size={20} />
+          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-600 rounded-full p-2 cursor-pointer hover:bg-blue-700 transition-all duration-200 hover:scale-110">
+            <Search className="text-white" size={20} />
           </div>
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredSites.map((site, index) => (
             <div
               key={site.id}
-              className="bg-[hsl(220,25%,12%)] rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover-scale cursor-pointer border border-[hsl(220,20%,20%)] hover:border-primary/30 animate-fade-in"
+              className="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer border border-gray-100 hover:border-blue-200 animate-fade-in group"
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => setSelectedSite(site)}
             >
@@ -111,27 +110,34 @@ const PortfolioGrid = () => {
                 <img 
                   src={site.thumbnail} 
                   alt={site.name}
-                  className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  {site.industry}
+                </div>
               </div>
               
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-white">{site.name}</h3>
-                <p className="text-white/80 mb-4 line-clamp-2 font-medium">{site.description}</p>
+              <div className="p-8">
+                <h3 className="text-2xl font-display font-bold mb-3 text-gray-900">{site.name}</h3>
+                <p className="text-gray-600 mb-6 line-clamp-2 font-body leading-relaxed">{site.description}</p>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-white">${site.price}<span className="text-sm text-white/60">/month</span></span>
+                  <div>
+                    <span className="text-3xl font-bold text-gray-900">${site.price * 12}</span>
+                    <span className="text-gray-500 font-body">/year</span>
+                    <div className="text-sm text-gray-400 font-body">${site.price}/month</div>
+                  </div>
                   <Button 
                     size="sm" 
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-lg"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full px-4 py-1.5 text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg"
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedSite(site);
                     }}
                   >
-                    View Details
-                    <ExternalLink size={16} className="ml-2" />
+                    Manage
+                    <ExternalLink size={14} className="ml-1" />
                   </Button>
                 </div>
               </div>
@@ -141,8 +147,8 @@ const PortfolioGrid = () => {
 
         {filteredSites.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-xl text-white/80 font-semibold">
-              No websites found matching your search. Try different keywords.
+            <p className="text-xl text-gray-600 font-body">
+              No portfolio websites found matching your search. Try different keywords or browse all our work.
             </p>
           </div>
         )}
