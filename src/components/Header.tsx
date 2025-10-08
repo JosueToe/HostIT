@@ -22,34 +22,34 @@ const Header = () => {
   return (
     <>
       {/* Main Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-gray-600 shadow-sm">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="font-bold text-2xl text-gray-900 cursor-pointer tracking-wide" onClick={() => scrollToSection('hero')}>
-            Host<span className="text-blue-600">IT</span>
+          <div className="font-bold text-2xl text-white cursor-pointer tracking-wide" onClick={() => scrollToSection('hero')}>
+            Host<span className="animated-gradient">IT</span>
           </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('hero')}
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors relative group"
+              className="text-gray-300 hover:text-blue-400 font-medium transition-all duration-300 ease-out relative group"
             >
               Home
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 ease-out group-hover:w-full"></span>
             </button>
             <button 
               onClick={() => scrollToSection('portfolio')}
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors relative group"
+              className="text-gray-300 hover:text-blue-400 font-medium transition-all duration-300 ease-out relative group"
             >
               Our Work
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 ease-out group-hover:w-full"></span>
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors relative group"
+              className="text-gray-300 hover:text-blue-400 font-medium transition-all duration-300 ease-out relative group"
             >
               Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 ease-out group-hover:w-full"></span>
             </button>
           </nav>
 
@@ -65,7 +65,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors"
+              className="md:hidden p-2 text-gray-300 hover:text-blue-400 transition-all duration-300 ease-out"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -74,28 +74,34 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="absolute top-16 left-0 right-0 bg-white border-b border-gray-200 shadow-lg md:hidden">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="absolute top-16 left-0 right-0 bg-gray-900/95 backdrop-blur-md border-b border-gray-600 shadow-lg md:hidden"
+          >
             <nav className="flex flex-col p-4 space-y-4">
               <button 
                 onClick={() => scrollToSection('hero')}
-                className="text-left text-gray-700 hover:text-blue-600 transition-colors font-medium py-2"
+                className="text-left text-gray-300 hover:text-blue-400 transition-all duration-300 ease-out font-medium py-2"
               >
                 Home
               </button>
               <button 
                 onClick={() => scrollToSection('portfolio')}
-                className="text-left text-gray-700 hover:text-blue-600 transition-colors font-medium py-2"
+                className="text-left text-gray-300 hover:text-blue-400 transition-all duration-300 ease-out font-medium py-2"
               >
                 Our Work
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}
-                className="text-left text-gray-700 hover:text-blue-600 transition-colors font-medium py-2"
+                className="text-left text-gray-300 hover:text-blue-400 transition-all duration-300 ease-out font-medium py-2"
               >
                 Contact
               </button>
             </nav>
-          </div>
+          </motion.div>
         )}
       </header>
     </>

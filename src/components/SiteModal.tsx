@@ -33,14 +33,14 @@ const SiteModal = ({ site, onClose }) => {
       const result = await createCheckoutSession(
         site.id.toString(), 
         site.name, 
-        site.price
+        site.monthlyPrice
       );
       
       if (!result.success) {
         throw new Error(result.error);
       }
       
-      console.log(`Started monthly subscription for ${site.name} at $${site.price}/month`);
+      console.log(`Started monthly subscription for ${site.name} at $${site.monthlyPrice}/month`);
       
     } catch (error) {
       console.error('Purchase error:', error);
@@ -53,16 +53,24 @@ const SiteModal = ({ site, onClose }) => {
   };
 
   const handleLivePreview = () => {
-    // Create a mock URL for the live preview - in real implementation, this would be the actual site URL
-    const mockSiteUrl = `https://${site.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.demo-site.com`;
+    // Map site names to their actual URLs
+    const siteUrlMap = {
+      "RSG Mechanics": "https://rsgmechanics.com",
+      "TG Telecomm": "https://tgtelecomm.net/",
+      "SoloLaunch": "https://sololaunch.app",
+      "Artisan Coffee Co.": "https://artisan-coffee.com",
+      "Green Thumb Gardens": "https://green-garden.com"
+    };
+    
+    const siteUrl = siteUrlMap[site.name] || `https://${site.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.demo-site.com`;
     
     toast({
       title: "Opening Live Preview",
       description: "Opening live preview in new tab",
     });
     
-    // Open the site in a new tab
-    window.open(mockSiteUrl, '_blank');
+    // Open the actual site in a new tab
+    window.open(siteUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -92,7 +100,7 @@ const SiteModal = ({ site, onClose }) => {
               </span>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-blue-600">${site.price * 12}<span className="text-lg text-gray-500">/year</span></div>
+              <div className="text-3xl font-bold text-blue-600">${site.yearlyPrice}<span className="text-lg text-gray-500">/year</span></div>
             </div>
           </div>
           
@@ -119,7 +127,7 @@ const SiteModal = ({ site, onClose }) => {
                 size="lg" 
                 className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
               >
-                Subscribe - ${site.price * 12}/year
+                Subscribe - ${site.yearlyPrice}/year
               </Button>
               <Button 
                 variant="outline" 

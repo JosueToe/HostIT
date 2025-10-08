@@ -4,15 +4,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, ExternalLink } from "lucide-react";
 import SiteModal from "./SiteModal";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import AnimatedBackground from "./AnimatedBackground";
 
 const portfolioSites = [
   {
     id: 1,
-    name: "Bella's Italian Restaurant",
-    industry: "Restaurant",
-    thumbnail: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop",
-    description: "Modern restaurant website with online reservations and menu showcase",
-    price: 29,
+    name: "RSG Mechanics",
+    industry: "Automotive",
+    thumbnail: "/lovable-uploads/rsg-mechanics-screenshot.png",
+    description: "Professional mobile auto repair service website with service scheduling and location-based services",
+    yearlyPrice: 100,
+    monthlyPrice: 8.33,
     features: ["Premium Hosting Included", "SSL Certificate", "Daily Backups", "24/7 Support", "CDN Performance"]
   },
   {
@@ -21,7 +25,8 @@ const portfolioSites = [
     industry: "Telecommunications",
     thumbnail: "/lovable-uploads/c340eeba-5ce9-4d41-a0b5-520415d2c714.png",
     description: "Professional telecommunications website with business connectivity services and fast support",
-    price: 42,
+    yearlyPrice: 120,
+    monthlyPrice: 10,
     features: ["99.9% Uptime Guarantee", "Advanced Security", "Email Hosting", "Domain Management", "Performance Monitoring"]
   },
   {
@@ -30,7 +35,8 @@ const portfolioSites = [
     industry: "Technology",
     thumbnail: "/lovable-uploads/963bc961-02a9-421f-824b-2d95a0546f0b.png",
     description: "AI-powered startup builder with complete business foundation tools and branding",
-    price: 45,
+    yearlyPrice: 240,
+    monthlyPrice: 20,
     features: ["Cloud Hosting", "Auto-scaling", "Git Integration", "Staging Environment", "API Management"]
   },
   {
@@ -39,7 +45,8 @@ const portfolioSites = [
     industry: "Coffee Shop",
     thumbnail: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=300&fit=crop",
     description: "Cozy coffee shop website with online ordering and location finder",
-    price: 27,
+    yearlyPrice: 120,
+    monthlyPrice: 10,
     features: ["Lightning-fast Loading", "Mobile Optimized", "SEO Optimized", "Analytics Dashboard", "Regular Updates"]
   },
   {
@@ -48,7 +55,8 @@ const portfolioSites = [
     industry: "Landscaping",
     thumbnail: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop",
     description: "Professional landscaping website showcasing beautiful garden designs",
-    price: 32,
+    yearlyPrice: 140,
+    monthlyPrice: 11.67,
     features: ["Global CDN", "Image Optimization", "Database Hosting", "Form Processing", "Security Monitoring"]
   },
   {
@@ -57,7 +65,8 @@ const portfolioSites = [
     industry: "Healthcare",
     thumbnail: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&h=300&fit=crop",
     description: "Modern dental practice website with appointment booking system",
-    price: 37,
+    yearlyPrice: 140,
+    monthlyPrice: 11.67,
     features: ["HIPAA Compliance", "Encrypted Hosting", "Automatic Backups", "Uptime Monitoring", "Technical Support"]
   }
 ];
@@ -65,6 +74,7 @@ const portfolioSites = [
 const PortfolioGrid = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSite, setSelectedSite] = useState(null);
+  const { ref, isInView } = useScrollAnimation(0.1);
 
   const filteredSites = portfolioSites.filter(site =>
     site.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -72,38 +82,61 @@ const PortfolioGrid = () => {
   );
 
   return (
-    <section id="portfolio" className="pt-16 pb-20 bg-gray-50">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 text-gray-900">
-            Our <span className="animated-gradient">Portfolio</span> & Payments
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-body leading-relaxed">
-            Explore our portfolio of professionally designed websites we've created and hosted for real customers. 
-            Existing customers can manage their subscriptions and payments here. See what we've built for others and get inspired for your own project.
-          </p>
-        </div>
+      <motion.section 
+        id="portfolio" 
+        className="pt-16 pb-20 bg-transparent relative overflow-hidden"
+        ref={ref}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        {/* Animated Background */}
+        <AnimatedBackground variant="portfolio" />
+      <div className="container mx-auto px-4 max-w-8xl">
+        {/* Main Glassmorphism Container */}
+        <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-12 border border-white/10">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+             <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '700', letterSpacing: '-0.02em' }}>
+               Our <span className="animated-gradient">Portfolio</span> & Payments
+             </h2>
+             <p className="text-xl text-gray-300 max-w-3xl mx-auto font-body leading-relaxed">
+              Explore our portfolio of professionally designed websites we've created and hosted for real customers. 
+              Existing customers can manage their subscriptions and payments here. See what we've built for others and get inspired for your own project.
+            </p>
+          </motion.div>
 
-        {/* Search Bar */}
-        <div className="relative max-w-lg mx-auto mb-16">
-          <Input
-            placeholder="Search portfolio or find your site..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-6 pr-12 py-4 text-lg bg-white text-gray-900 placeholder:text-gray-400 rounded-full w-full transition-all duration-200 focus:ring-2 focus:ring-blue-500/50 border-2 border-gray-200 focus:border-blue-500 shadow-lg"
-          />
-          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-600 rounded-full p-2 cursor-pointer hover:bg-blue-700 transition-all duration-200 hover:scale-110">
-            <Search className="text-white" size={20} />
-          </div>
-        </div>
+          {/* Search Bar */}
+          <motion.div 
+            className="relative max-w-lg mx-auto mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Input
+              placeholder="Search portfolio or find your site..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+               className="pl-6 pr-12 py-4 text-lg bg-white/10 backdrop-blur-md text-white placeholder:text-gray-400 rounded-full w-full transition-all duration-200 focus:ring-2 focus:ring-blue-400/50 border-2 border-white/20 focus:border-blue-400 shadow-lg"
+            />
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-600 rounded-full p-2 cursor-pointer hover:bg-blue-700 transition-all duration-200 hover:scale-110">
+              <Search className="text-white" size={20} />
+            </div>
+          </motion.div>
 
-        {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Portfolio Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredSites.map((site, index) => (
-            <div
+            <motion.div
               key={site.id}
-              className="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer border border-gray-100 hover:border-blue-200 animate-fade-in group"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="bg-white/10 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer border border-white/20 hover:border-white/30 group"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.6, delay: 0.6 + (index * 0.1) }}
               onClick={() => setSelectedSite(site)}
             >
               <div className="relative overflow-hidden">
@@ -119,14 +152,14 @@ const PortfolioGrid = () => {
               </div>
               
               <div className="p-8">
-                <h3 className="text-2xl font-display font-bold mb-3 text-gray-900">{site.name}</h3>
-                <p className="text-gray-600 mb-6 line-clamp-2 font-body leading-relaxed">{site.description}</p>
+                 <h3 className="text-2xl font-bold mb-3 text-white" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '600', letterSpacing: '-0.01em' }}>{site.name}</h3>
+                <p className="text-gray-200 mb-6 line-clamp-2 font-body leading-relaxed">{site.description}</p>
                 
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-3xl font-bold text-gray-900">${site.price * 12}</span>
-                    <span className="text-gray-500 font-body">/year</span>
-                    <div className="text-sm text-gray-400 font-body">${site.price}/month</div>
+                    <span className="text-3xl font-bold text-white" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '700', letterSpacing: '-0.01em' }}>${site.yearlyPrice}</span>
+                    <span className="text-gray-300 font-body">/year</span>
+                    <div className="text-sm text-gray-300 font-body">${site.monthlyPrice}/month</div>
                   </div>
                   <Button 
                     size="sm" 
@@ -141,17 +174,23 @@ const PortfolioGrid = () => {
                   </Button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-
-        {filteredSites.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-xl text-gray-600 font-body">
-              No portfolio websites found matching your search. Try different keywords or browse all our work.
-            </p>
           </div>
-        )}
+
+          {filteredSites.length === 0 && (
+            <motion.div 
+              className="text-center py-12"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <p className="text-xl text-gray-300 font-body">
+                No portfolio websites found matching your search. Try different keywords or browse all our work.
+              </p>
+            </motion.div>
+          )}
+        </div>
       </div>
 
       {/* Site Modal */}
@@ -161,7 +200,7 @@ const PortfolioGrid = () => {
           onClose={() => setSelectedSite(null)} 
         />
       )}
-    </section>
+    </motion.section>
   );
 };
 

@@ -1,18 +1,18 @@
-
-import { useState } from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import AnimatedBackground from './AnimatedBackground';
 
 const HeroCarousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(2); // Start with center slide (index 2)
+  const { ref: scrollRef, isInView } = useScrollAnimation(0.2);
   
   const slides = [
     {
       id: 'overlay1',
-      title: "Bella's Italian Restaurant",
-      url: "https://bellas-restaurant.com",
-      description: "Modern Italian restaurant with online reservations and authentic wood-fired cuisine",
-      image: "https://picsum.photos/400/400?random=1",
-      alt: "Bella's Italian Restaurant"
+      title: "RSG Mechanics",
+      url: "https://rsgmechanics.com",
+      description: "Professional mobile auto repair service in South Florida - we come to you for honest diagnostics and quality parts",
+      image: "/lovable-uploads/rsg-mechanics-screenshot.png",
+      alt: "RSG Mechanics"
     },
     {
       id: 'overlay2',
@@ -48,43 +48,17 @@ const HeroCarousel = () => {
     }
   ];
 
-  const getSlideClass = (index) => {
-    const position = index - currentSlide;
-    switch (position) {
-      case -2: return 'slide slide-1';
-      case -1: return 'slide slide-2';
-      case 0: return 'slide slide-3 center-slide';
-      case 1: return 'slide slide-4';
-      case 2: return 'slide slide-5';
-      default: return 'slide hidden';
-    }
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const handleSlideClick = (index, e) => {
-    const position = index - currentSlide;
-    
-    if (position === 1) {
-      // Clicked on right adjacent card
-      e.preventDefault();
-      nextSlide();
-    } else if (position === -1) {
-      // Clicked on left adjacent card
-      e.preventDefault();
-      prevSlide();
-    }
-    // If position === 0 (center card), let the default overlay behavior happen
-  };
-
   return (
-    <section id="hero" className="hero-coverflow">
+    <motion.section 
+      id="hero" 
+      className="hero-floating-carousel relative overflow-hidden"
+      ref={scrollRef}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      {/* Animated Background */}
+      <AnimatedBackground variant="hero" />
       {slides.map((slide, index) => (
         <div key={slide.id} id={slide.id} className="overlay-target">
           <div className="overlay-content">
@@ -98,39 +72,115 @@ const HeroCarousel = () => {
         </div>
       ))}
 
-      <div className="coverflow-container">
-        {/* Previous Arrow */}
-        <button 
-          onClick={prevSlide}
-          className="carousel-arrow carousel-arrow-left"
-          aria-label="Previous slide"
-        >
-          <ArrowLeft size={24} />
-        </button>
 
-        <div className="coverflow">
+      <motion.div 
+        className="auto-scroll-container"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+        transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+      >
+        <div className="auto-scroll-track">
+          {/* First set of slides */}
           {slides.map((slide, index) => (
-            <a 
-              key={slide.id}
-              href={currentSlide === index ? `#${slide.id}` : '#'} 
-              className={getSlideClass(index)}
-              onClick={(e) => handleSlideClick(index, e)}
+            <motion.div 
+              key={`first-${slide.id}`}
+              className="floating-card"
+              style={{ animationDelay: `${index * 0.2}s` }}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                // Redirect to the actual website
+                window.open(slide.url, '_blank', 'noopener,noreferrer');
+              }}
+              whileHover={{ 
+                scale: 1.02, 
+                y: -8,
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.98 }}
             >
-              <img src={slide.image} alt={slide.alt} />
-            </a>
+              <div className="card-glow"></div>
+              <img 
+                src={slide.image} 
+                alt={slide.alt}
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="card-overlay">
+                <h4>{slide.title}</h4>
+                <p>{slide.description}</p>
+              </div>
+            </motion.div>
+          ))}
+          
+          {/* Duplicate set for seamless infinite loop */}
+          {slides.map((slide, index) => (
+            <motion.div 
+              key={`second-${slide.id}`}
+              className="floating-card"
+              style={{ animationDelay: `${(index + slides.length) * 0.2}s` }}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                // Redirect to the actual website
+                window.open(slide.url, '_blank', 'noopener,noreferrer');
+              }}
+              whileHover={{ 
+                scale: 1.02, 
+                y: -8,
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="card-glow"></div>
+              <img 
+                src={slide.image} 
+                alt={slide.alt}
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="card-overlay">
+                <h4>{slide.title}</h4>
+                <p>{slide.description}</p>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Third set to ensure continuous coverage */}
+          {slides.map((slide, index) => (
+            <motion.div 
+              key={`third-${slide.id}`}
+              className="floating-card"
+              style={{ animationDelay: `${(index + slides.length * 2) * 0.2}s` }}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                // Redirect to the actual website
+                window.open(slide.url, '_blank', 'noopener,noreferrer');
+              }}
+              whileHover={{ 
+                scale: 1.02, 
+                y: -8,
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="card-glow"></div>
+              <img 
+                src={slide.image} 
+                alt={slide.alt}
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="card-overlay">
+                <h4>{slide.title}</h4>
+                <p>{slide.description}</p>
+              </div>
+            </motion.div>
           ))}
         </div>
-
-        {/* Next Arrow */}
-        <button 
-          onClick={nextSlide}
-          className="carousel-arrow carousel-arrow-right"
-          aria-label="Next slide"
-        >
-          <ArrowRight size={24} />
-        </button>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 
