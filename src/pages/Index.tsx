@@ -37,7 +37,7 @@ const Index = () => {
 
       <Header />
       <div>
-        <div className="pt-1"> {/* Reduced spacing from header */}
+        <div className="pt-20"> {/* Proper spacing to prevent header overlap */}
           <HeroCarousel />
         </div>
         {/* Section heading between carousel and separator */}

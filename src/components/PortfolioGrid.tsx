@@ -129,11 +129,11 @@ const PortfolioGrid = () => {
           </motion.div>
 
           {/* Portfolio Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
           {filteredSites.map((site, index) => (
             <motion.div
               key={site.id}
-              className="bg-white/10 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer border border-white/20 hover:border-white/30 group"
+              className="bg-white/10 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] cursor-pointer border border-white/20 hover:border-white/30 group max-w-md mx-auto w-full"
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: 0.6 + (index * 0.1) }}
@@ -151,26 +151,26 @@ const PortfolioGrid = () => {
                 </div>
               </div>
               
-              <div className="p-8">
+              <div className="p-6">
                  <h3 className="text-2xl font-bold mb-3 text-white" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '600', letterSpacing: '-0.01em' }}>{site.name}</h3>
                 <p className="text-gray-200 mb-6 line-clamp-2 font-body leading-relaxed">{site.description}</p>
                 
-                <div className="flex items-center justify-between">
-                  <div>
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-bold text-white" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '700', letterSpacing: '-0.01em' }}>${site.yearlyPrice}</span>
                     <span className="text-gray-300 font-body">/year</span>
-                    <div className="text-sm text-gray-300 font-body">${site.monthlyPrice}/month</div>
+                    <span className="text-sm text-gray-400 font-body ml-auto">${site.monthlyPrice}/mo</span>
                   </div>
                   <Button 
                     size="sm" 
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full px-4 py-1.5 text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full py-2.5 text-sm transition-all duration-200 hover:scale-[1.02] hover:shadow-lg flex items-center justify-center gap-2"
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedSite(site);
                     }}
                   >
-                    Manage
-                    <ExternalLink size={14} className="ml-1" />
+                    Manage Subscription
+                    <ExternalLink size={16} />
                   </Button>
                 </div>
               </div>

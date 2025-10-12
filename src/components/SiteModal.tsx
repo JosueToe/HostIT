@@ -9,6 +9,9 @@ const SiteModal = ({ site, onClose }) => {
   const modalRef = useRef(null);
 
   useEffect(() => {
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+    
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         onClose();
@@ -18,6 +21,8 @@ const SiteModal = ({ site, onClose }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      // Restore body scroll when modal closes
+      document.body.style.overflow = 'unset';
     };
   }, [onClose]);
 
@@ -71,8 +76,8 @@ const SiteModal = ({ site, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 animate-fade-in">
-      <div ref={modalRef} className="bg-white rounded-3xl max-w-2xl w-full border border-gray-200 shadow-2xl animate-scale-in">
+    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 animate-fade-in overflow-y-auto">
+      <div ref={modalRef} className="bg-white rounded-3xl max-w-2xl w-full border border-gray-200 shadow-2xl animate-scale-in my-8 max-h-[90vh] overflow-y-auto">
         <div className="relative">
           <button 
             onClick={onClose}
