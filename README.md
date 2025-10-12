@@ -1,6 +1,6 @@
-# HostIT - Premium Website Hosting Platform
+# Host-IT.App - Premium Website Hosting Platform
 
-A modern web hosting portfolio website built with React, TypeScript, and Vite. HostIT showcases beautiful, ready-made websites with premium hosting plans and subscription-based pricing.
+A modern web hosting portfolio website built with React, TypeScript, and Vite. Host-IT.App showcases beautiful, ready-made websites with premium hosting plans and subscription-based pricing.
 
 ## 🚀 Features
 
@@ -55,9 +55,10 @@ This project is optimized for Netlify deployment:
    - Build command: `npm run build`
    - Publish directory: `dist`
 3. **Add environment variables** in Netlify dashboard:
-   - `VITE_STRIPE_PUBLISHABLE_KEY`
-   - `VITE_SITE_URL`
-   - `VITE_CONTACT_EMAIL`
+   - `VITE_EMAILJS_SERVICE_ID` = service_l53wwur
+   - `VITE_EMAILJS_TEMPLATE_ID` = template_kbf2d6b
+   - `VITE_EMAILJS_PUBLIC_KEY` = aFMY4FzZzeI5jSpaj
+   - `VITE_CONTACT_EMAIL` = contact@Host-IT.app
 4. **Deploy!** - The `netlify.toml` configuration handles the rest
 
 ## 📁 Project Structure
@@ -95,8 +96,10 @@ The Stripe integration supports:
 
 ## 📞 Support
 
-For questions or support, contact us at hello@hostit.com
+For questions or support, contact us at **contact@Host-IT.app**
+
+Visit us at: **https://Host-IT.App**
 
 ---
 
-Built with ❤️ by the HostIT Team
+Built with ❤️ by the Host-IT Team

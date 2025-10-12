@@ -31,7 +31,7 @@ const ContactSection = () => {
       if (success) {
         toast({
           title: "Email Sent Successfully!",
-          description: "Your message has been sent to Contact@hostIT.com. We'll get back to you within 24 hours.",
+          description: "Your message has been sent to contact@Host-IT.app. We'll get back to you within 24 hours.",
           variant: "default",
         });
         
@@ -45,7 +45,7 @@ const ContactSection = () => {
       } else {
         toast({
           title: "Error Sending Email",
-          description: "There was a problem sending your message. Please try again or contact us directly at Contact@hostIT.com",
+          description: "There was a problem sending your message. Please try again or contact us directly at contact@Host-IT.app",
           variant: "destructive",
         });
       }
@@ -53,7 +53,7 @@ const ContactSection = () => {
       console.error('Form submission error:', error);
       toast({
         title: "Error Sending Email",
-        description: "There was a problem sending your message. Please try again or contact us directly at Contact@hostIT.com",
+        description: "There was a problem sending your message. Please try again or contact us directly at contact@Host-IT.app",
         variant: "destructive",
       });
     } finally {
@@ -197,7 +197,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-white text-lg" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '700' }}>Email Us</h4>
-                  <p className="text-gray-200 font-semibold" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '600' }}>Contact@hostIT.com</p>
+                  <p className="text-gray-200 font-semibold" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '600' }}>contact@Host-IT.app</p>
                 </div>
               </div>
               

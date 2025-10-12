@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { X, Check, ExternalLink } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { createCheckoutSession } from "@/lib/stripe";
 import { useRef, useEffect } from "react";
 
 const SiteModal = ({ site, onClose }) => {
@@ -23,31 +22,29 @@ const SiteModal = ({ site, onClose }) => {
   }, [onClose]);
 
   const handlePurchase = async () => {
-    try {
+    // Map site names to their Stripe payment links
+    const stripePaymentLinks = {
+      "RSG Mechanics": "https://buy.stripe.com/cNi00jc1Cc913Ws6QCdIA03",
+      "SoloLaunch": "https://buy.stripe.com/5kQeVd6Hia0T3Ws7UGdIA04",
+      "TG Telecomm": "https://buy.stripe.com/7sY28r5De4Gzdx27UGdIA05"
+    };
+    
+    const paymentUrl = stripePaymentLinks[site.name];
+    
+    if (paymentUrl) {
       toast({
         title: "Redirecting to Checkout",
         description: "Opening Stripe Checkout in a new tab to complete your subscription.",
       });
       
-      // Create Stripe checkout session
-      const result = await createCheckoutSession(
-        site.id.toString(), 
-        site.name, 
-        site.monthlyPrice
-      );
-      
-      if (!result.success) {
-        throw new Error(result.error);
-      }
-      
-      console.log(`Started monthly subscription for ${site.name} at $${site.monthlyPrice}/month`);
-      
-    } catch (error) {
-      console.error('Purchase error:', error);
+      // Open the Stripe payment link in a new tab
+      window.open(paymentUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      // For sites without a specific payment link, show a message
       toast({
-        title: "Error",
-        description: "There was an issue processing your subscription. Please try again.",
-        variant: "destructive",
+        title: "Coming Soon",
+        description: "Payment option for this site is being set up. Please contact us for more information.",
+        variant: "default",
       });
     }
   };

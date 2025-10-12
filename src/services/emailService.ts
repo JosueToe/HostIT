@@ -1,12 +1,15 @@
 import emailjs from '@emailjs/browser';
 
-// EmailJS configuration
-const EMAILJS_SERVICE_ID = 'service_hostit'; // You'll need to create this in EmailJS
-const EMAILJS_TEMPLATE_ID = 'template_contact'; // You'll need to create this in EmailJS
-const EMAILJS_PUBLIC_KEY = 'your_public_key_here'; // You'll get this from EmailJS
+// EmailJS configuration - using environment variables for security
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_l53wwur';
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_kbf2d6b';
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'aFMY4FzZzeI5jSpaj';
+const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || 'contact@Host-IT.app';
 
-// Initialize EmailJS
-emailjs.init(EMAILJS_PUBLIC_KEY);
+// Initialize EmailJS if public key is available
+if (EMAILJS_PUBLIC_KEY) {
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+}
 
 export interface ContactFormData {
   name: string;
@@ -17,13 +20,31 @@ export interface ContactFormData {
 
 export const sendContactEmail = async (formData: ContactFormData): Promise<boolean> => {
   try {
+    // Check if EmailJS is properly configured
+    if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
+      console.error('EmailJS not configured. Please set up environment variables.');
+      
+      // For development: log the form data
+      console.log('Contact form submission:', {
+        from: formData.name,
+        email: formData.email,
+        company: formData.company,
+        message: formData.message,
+        to: CONTACT_EMAIL
+      });
+      
+      // Return false if not configured
+      return false;
+    }
+
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
       company: formData.company || 'Not provided',
       message: formData.message,
-      to_email: 'Contact@hostIT.com',
+      to_email: CONTACT_EMAIL,
       reply_to: formData.email,
+      subject: `New Contact Form Submission from ${formData.name}`,
     };
 
     const response = await emailjs.send(
@@ -32,7 +53,7 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<boole
       templateParams
     );
 
-    console.log('Email sent successfully:', response);
+    console.log('Email sent successfully to', CONTACT_EMAIL, response);
     return true;
   } catch (error) {
     console.error('Error sending email:', error);
@@ -50,7 +71,7 @@ export const sendContactEmailViaAPI = async (formData: ContactFormData): Promise
       },
       body: JSON.stringify({
         ...formData,
-        to: 'Contact@hostIT.com',
+        to: 'contact@Host-IT.app',
         subject: `New Contact Form Submission from ${formData.name}`,
       }),
     });
