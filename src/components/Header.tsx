@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,8 +25,18 @@ const Header = () => {
       {/* Main Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-gray-600 shadow-sm">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="font-bold text-2xl text-white cursor-pointer tracking-wide" onClick={() => scrollToSection('hero')}>
-            Host<span className="animated-gradient">IT</span>
+          <div 
+            className="flex items-center gap-3 cursor-pointer group" 
+            onClick={() => scrollToSection('hero')}
+          >
+            <img 
+              src="/host-it-logo.png" 
+              alt="Host-IT Logo" 
+              className="h-14 w-14 transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="font-bold text-2xl text-white tracking-wide transition-all duration-300">
+              Host-<span className="animated-gradient">IT</span>
+            </span>
           </div>
           
           {/* Desktop Navigation */}
