@@ -37,7 +37,39 @@ const Index = () => {
 
       <Header />
       <div>
-        <div className="pt-20"> {/* Proper spacing to prevent header overlap */}
+        {/* SEO Hero Section with H1 */}
+        <section className="pt-32 pb-8 px-4 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '800', letterSpacing: '-0.02em' }}>
+              Premium <span className="animated-gradient">Website Hosting</span><br />& Development Services
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto mb-8 leading-relaxed font-semibold">
+              Get your business online with professional website hosting and custom web design. 
+              Affordable yearly plans starting at <strong>$120/year</strong>. Premium hosting, 24/7 support, 
+              SSL certificates, and lightning-fast performance included.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-gray-300 text-sm md:text-base mb-4">
+              <span className="px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm border border-white/20">
+                <strong>99.9% Uptime</strong>
+              </span>
+              <span className="px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm border border-white/20">
+                <strong>24/7 Support</strong>
+              </span>
+              <span className="px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm border border-white/20">
+                <strong>Free SSL</strong>
+              </span>
+              <span className="px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm border border-white/20">
+                <strong>Daily Backups</strong>
+              </span>
+            </div>
+          </motion.div>
+        </section>
+        
+        <div className="pt-8"> {/* Proper spacing to prevent header overlap */}
           <HeroCarousel />
         </div>
         {/* Section heading between carousel and separator */}
@@ -50,7 +82,7 @@ const Index = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
             >
-              What We've <span className="animated-gradient">Created</span>
+              Featured <span className="animated-gradient">Client Websites</span>
               {/* Multi-line underline effect */}
               <div className="absolute -bottom-2 left-0 w-full h-0.5 bg-white/60"></div>
               <div className="absolute -bottom-4 left-0 w-4/5 h-0.5 bg-white/40"></div>

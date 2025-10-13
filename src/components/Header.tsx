@@ -31,7 +31,7 @@ const Header = () => {
           >
             <img 
               src="/host-it-logo.png" 
-              alt="Host-IT Logo" 
+              alt="Host-IT Premium Website Hosting and Development Services Logo" 
               className="h-14 w-14 transition-transform duration-300 group-hover:scale-110"
             />
             <span className="font-bold text-2xl text-white tracking-wide transition-all duration-300">

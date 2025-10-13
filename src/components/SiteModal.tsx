@@ -58,7 +58,7 @@ const SiteModal = ({ site, onClose }) => {
     // Map site names to their actual URLs
     const siteUrlMap = {
       "RSG Mechanics": "https://rsgmechanics.com",
-      "TG Telecomm": "https://tgtelecomm.net/",
+      "TG Telecomm": "https://tgtelecomm.com/",
       "SoloLaunch": "https://sololaunch.app",
       "Artisan Coffee Co.": "https://artisan-coffee.com",
       "Green Thumb Gardens": "https://green-garden.com"

@@ -4,9 +4,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Host-IT - Premium Website Hosting & Development</title>
-    <meta name="description" content="Professional website hosting and development services. Get your business online with premium hosting, custom designs, and 24/7 support." />
+    <title>Host-IT - Premium Website Hosting & Development Services | Professional Web Design</title>
+    <meta name="description" content="Professional website hosting and development services. Get your business online with premium hosting, custom designs, and 24/7 support. Affordable yearly plans starting at $120/year." />
+    <meta name="keywords" content="website hosting, web development, custom website design, premium hosting, web design services, affordable hosting, business websites, professional web design, website maintenance, hosting services, web hosting, domain hosting, SSL certificate, CDN hosting, 24/7 support" />
     <meta name="author" content="Host-IT" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://host-it.app/" />
     
     <!-- Favicon - Multiple sizes for better display -->
     <link rel="icon" type="image/png" sizes="32x32" href="/host-it-logo.png" />
@@ -15,17 +18,21 @@
     <link rel="shortcut icon" href="/host-it-logo.png" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Host-IT - Premium Website Hosting & Development" />
-    <meta property="og:description" content="Professional website hosting and development services. Get your business online with premium hosting, custom designs, and 24/7 support." />
+    <meta property="og:title" content="Host-IT - Premium Website Hosting & Development Services" />
+    <meta property="og:description" content="Professional website hosting and development services. Get your business online with premium hosting, custom designs, and 24/7 support. Affordable yearly plans starting at $120/year." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://Host-IT.app" />
-    <meta property="og:image" content="https://Host-IT.app/host-it-logo.png" />
+    <meta property="og:url" content="https://host-it.app" />
+    <meta property="og:image" content="https://host-it.app/host-it-logo.png" />
+    <meta property="og:site_name" content="Host-IT" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Host-IT - Premium Website Hosting & Development" />
-    <meta name="twitter:description" content="Professional website hosting and development services. Get your business online with premium hosting, custom designs, and 24/7 support." />
-    <meta name="twitter:image" content="https://Host-IT.app/host-it-logo.png" />
+    <meta name="twitter:title" content="Host-IT - Premium Website Hosting & Development Services" />
+    <meta name="twitter:description" content="Professional website hosting and development services. Get your business online with premium hosting, custom designs, and 24/7 support. Affordable yearly plans starting at $120/year." />
+    <meta name="twitter:image" content="https://host-it.app/host-it-logo.png" />
+    <meta name="twitter:site" content="@HostIT" />
+    <meta name="twitter:creator" content="@HostIT" />
     
     <!-- Inter Font for sharp, modern typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,9 +41,68 @@
     
     <!-- Scroll-timeline polyfill for browser compatibility -->
     <script src="https://scroll-driven-animations.style/shared/third_party/polyfill/scroll-timeline.js"></script>
+    
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Host-IT",
+      "url": "https://host-it.app",
+      "logo": "https://host-it.app/host-it-logo.png",
+      "description": "Professional website hosting and development services. Get your business online with premium hosting, custom designs, and 24/7 support.",
+      "email": "contact@host-it.app",
+      "telephone": "+1-786-333-5331",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      },
+      "sameAs": [],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Website Hosting & Development Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Premium Website Hosting",
+              "description": "Professional website hosting with SSL, daily backups, and 24/7 support"
+            },
+            "price": "120",
+            "priceCurrency": "USD",
+            "priceValidUntil": "2026-12-31"
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Host-IT",
+      "url": "https://host-it.app",
+      "description": "Premium website hosting and development services",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://host-it.app/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
 
   <body>
+    <noscript>
+      <div style="padding: 40px; text-align: center; font-family: Arial, sans-serif;">
+        <h1>Host-IT - Premium Website Hosting & Development Services</h1>
+        <p>Professional website hosting and development services. Get your business online with premium hosting, custom designs, and 24/7 support.</p>
+        <p>For the best experience, please enable JavaScript in your browser.</p>
+        <p>Contact us: <a href="mailto:contact@host-it.app">contact@host-it.app</a> | Phone: 786-333-5331</p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

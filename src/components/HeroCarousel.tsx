@@ -12,15 +12,15 @@ const HeroCarousel = () => {
       url: "https://rsgmechanics.com",
       description: "Professional mobile auto repair service in South Florida - we come to you for honest diagnostics and quality parts",
       image: "/lovable-uploads/rsg-mechanics-screenshot.png",
-      alt: "RSG Mechanics"
+      alt: "RSG Mechanics website - Professional mobile auto repair service in South Florida designed and hosted by Host-IT"
     },
     {
       id: 'overlay2',
       title: "TG Telecomm",
-      url: "https://tgtelecomm.net/",
+      url: "https://tgtelecomm.com/",
       description: "Professional telecommunications company providing fast phone support and business connectivity services",
       image: "/lovable-uploads/c340eeba-5ce9-4d41-a0b5-520415d2c714.png",
-      alt: "TG Telecomm"
+      alt: "TG Telecomm website - Professional telecommunications company website designed and hosted by Host-IT"
     },
     {
       id: 'overlay3',
@@ -28,7 +28,7 @@ const HeroCarousel = () => {
       url: "https://sololaunch.app",
       description: "AI-powered startup builder transforming your startup idea into a complete business foundation with generated names, branding, marketing strategies, and professional assets",
       image: "/lovable-uploads/963bc961-02a9-421f-824b-2d95a0546f0b.png",
-      alt: "SoloLaunch.app"
+      alt: "SoloLaunch.app website - AI-powered startup builder platform designed and hosted by Host-IT"
     },
     {
       id: 'overlay4',
@@ -36,7 +36,7 @@ const HeroCarousel = () => {
       url: "https://artisan-coffee.com",
       description: "Specialty coffee roaster with locally sourced beans and handcrafted brewing methods",
       image: "https://picsum.photos/400/400?random=4",
-      alt: "Artisan Coffee Co."
+      alt: "Artisan Coffee Co. website - Specialty coffee roaster website designed and hosted by Host-IT"
     },
     {
       id: 'overlay5',
@@ -44,7 +44,7 @@ const HeroCarousel = () => {
       url: "https://green-garden.com",
       description: "Sustainable landscaping company creating beautiful outdoor spaces with eco-friendly practices",
       image: "https://picsum.photos/400/400?random=5",
-      alt: "Green Garden Landscapes"
+      alt: "Green Garden Landscapes website - Sustainable landscaping company website designed and hosted by Host-IT"
     }
   ];
 
