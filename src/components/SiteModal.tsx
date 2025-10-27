@@ -31,7 +31,8 @@ const SiteModal = ({ site, onClose }) => {
     const stripePaymentLinks = {
       "RSG Mechanics": "https://buy.stripe.com/cNi00jc1Cc913Ws6QCdIA03",
       "SoloLaunch": "https://buy.stripe.com/5kQeVd6Hia0T3Ws7UGdIA04",
-      "TG Telecomm": "https://buy.stripe.com/7sY28r5De4Gzdx27UGdIA05"
+      "TG Telecomm": "https://buy.stripe.com/7sY28r5De4Gzdx27UGdIA05",
+      "Paladin MMA": "https://buy.stripe.com/4gMaEX8Pqfld78E7UGdIA06"
     };
     
     const paymentUrl = stripePaymentLinks[site.name];
