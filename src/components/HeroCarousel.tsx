@@ -32,11 +32,11 @@ const HeroCarousel = () => {
     },
     {
       id: 'overlay4',
-      title: "Artisan Coffee Co.",
-      url: "https://artisan-coffee.com",
-      description: "Specialty coffee roaster with locally sourced beans and handcrafted brewing methods",
-      image: "https://picsum.photos/400/400?random=4",
-      alt: "Artisan Coffee Co. website - Specialty coffee roaster website designed and hosted by Host-IT"
+      title: "Paladin MMA",
+      url: "https://paladinmma.com",
+      description: "At Paladin MMA Academy, we don't just teach martial arts – we forge champions. Our world-class facility in Miami/Hialeah combines traditional martial arts discipline with cutting-edge training techniques.",
+      image: "/lovable-uploads/paladin-mma-screenshot.png",
+      alt: "Paladin MMA website - MMA Academy in Miami/Hialeah designed and hosted by Host-IT"
     },
     {
       id: 'overlay5',

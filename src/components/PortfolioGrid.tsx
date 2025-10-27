@@ -41,10 +41,10 @@ const portfolioSites = [
   },
   {
     id: 4,
-    name: "Artisan Coffee Co.",
-    industry: "Coffee Shop",
-    thumbnail: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=300&fit=crop",
-    description: "Cozy coffee shop website with online ordering and location finder",
+    name: "Paladin MMA",
+    industry: "MMA Academy",
+    thumbnail: "/lovable-uploads/paladin-mma-screenshot.png",
+    description: "MMA Academy in Miami/Hialeah offering specialized programs for all ages and fitness levels, from early morning MMA/Crosstraining to comprehensive adult and kids programs",
     yearlyPrice: 120,
     monthlyPrice: 10,
     features: ["Lightning-fast Loading", "Mobile Optimized", "SEO Optimized", "Analytics Dashboard", "Regular Updates"]

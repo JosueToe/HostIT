@@ -60,7 +60,7 @@ const SiteModal = ({ site, onClose }) => {
       "RSG Mechanics": "https://rsgmechanics.com",
       "TG Telecomm": "https://tgtelecomm.com/",
       "SoloLaunch": "https://sololaunch.app",
-      "Artisan Coffee Co.": "https://artisan-coffee.com",
+      "Paladin MMA": "https://paladinmma.com",
       "Green Thumb Gardens": "https://green-garden.com"
     };
     
