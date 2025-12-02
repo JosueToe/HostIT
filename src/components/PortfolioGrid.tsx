@@ -51,13 +51,13 @@ const portfolioSites = [
   },
   {
     id: 5,
-    name: "Green Thumb Gardens",
-    industry: "Landscaping",
-    thumbnail: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop",
-    description: "Professional landscaping website showcasing beautiful garden designs",
-    yearlyPrice: 140,
-    monthlyPrice: 11.67,
-    features: ["Global CDN", "Image Optimization", "Database Hosting", "Form Processing", "Security Monitoring"]
+    name: "Black Car Service Miami",
+    industry: "Transportation",
+    thumbnail: "/lovable-uploads/black-car-service-miami-screenshot.png",
+    description: "Your Ultimate Luxury Drive Awaits in Miami - Premium black car service for airport transfers, executive transport, and special occasions",
+    yearlyPrice: 120,
+    monthlyPrice: 10,
+    features: ["Premium Hosting Included", "SSL Certificate", "Daily Backups", "24/7 Support", "CDN Performance"]
   },
   {
     id: 6,

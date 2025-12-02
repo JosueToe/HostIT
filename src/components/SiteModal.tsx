@@ -32,7 +32,8 @@ const SiteModal = ({ site, onClose }) => {
       "RSG Mechanics": "https://buy.stripe.com/cNi00jc1Cc913Ws6QCdIA03",
       "SoloLaunch": "https://buy.stripe.com/5kQeVd6Hia0T3Ws7UGdIA04",
       "TG Telecomm": "https://buy.stripe.com/7sY28r5De4Gzdx27UGdIA05",
-      "Paladin MMA": "https://buy.stripe.com/4gMaEX8Pqfld78E7UGdIA06"
+      "Paladin MMA": "https://buy.stripe.com/4gMaEX8Pqfld78E7UGdIA06",
+      "Black Car Service Miami": "https://buy.stripe.com/00waEX9Tu5KD1Ok4IudIA07"
     };
     
     const paymentUrl = stripePaymentLinks[site.name];
@@ -62,7 +63,7 @@ const SiteModal = ({ site, onClose }) => {
       "TG Telecomm": "https://tgtelecomm.com/",
       "SoloLaunch": "https://sololaunch.app",
       "Paladin MMA": "https://paladinmma.com",
-      "Green Thumb Gardens": "https://green-garden.com"
+      "Black Car Service Miami": "https://blackcarcervicemiami.com"
     };
     
     const siteUrl = siteUrlMap[site.name] || `https://${site.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.demo-site.com`;

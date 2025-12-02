@@ -40,11 +40,11 @@ const HeroCarousel = () => {
     },
     {
       id: 'overlay5',
-      title: "Green Garden Landscapes",
-      url: "https://green-garden.com",
-      description: "Sustainable landscaping company creating beautiful outdoor spaces with eco-friendly practices",
-      image: "https://picsum.photos/400/400?random=5",
-      alt: "Green Garden Landscapes website - Sustainable landscaping company website designed and hosted by Host-IT"
+      title: "Black Car Service Miami",
+      url: "https://blackcarcervicemiami.com",
+      description: "Your Ultimate Luxury Drive Awaits in Miami - Premium black car service for airport transfers, executive transport, and special occasions",
+      image: "/lovable-uploads/black-car-service-miami-screenshot.png",
+      alt: "Black Car Service Miami website - Premium black car service in Miami designed and hosted by Host-IT"
     }
   ];
 
