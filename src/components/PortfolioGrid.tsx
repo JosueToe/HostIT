@@ -55,8 +55,8 @@ const portfolioSites = [
     industry: "Transportation",
     thumbnail: "/lovable-uploads/black-car-service-miami-screenshot.png",
     description: "Your Ultimate Luxury Drive Awaits in Miami - Premium black car service for airport transfers, executive transport, and special occasions",
-    yearlyPrice: 120,
-    monthlyPrice: 10,
+    yearlyPrice: 145,
+    monthlyPrice: 12.08,
     features: ["Premium Hosting Included", "SSL Certificate", "Daily Backups", "24/7 Support", "CDN Performance"]
   },
   {
