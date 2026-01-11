@@ -33,7 +33,8 @@ const SiteModal = ({ site, onClose }) => {
       "SoloLaunch": "https://buy.stripe.com/5kQeVd6Hia0T3Ws7UGdIA04",
       "TG Telecomm": "https://buy.stripe.com/7sY28r5De4Gzdx27UGdIA05",
       "Paladin MMA": "https://buy.stripe.com/4gMaEX8Pqfld78E7UGdIA06",
-      "Black Car Service Miami": "https://buy.stripe.com/00waEX9Tu5KD1Ok4IudIA07"
+      "Black Car Service Miami": "https://buy.stripe.com/00waEX9Tu5KD1Ok4IudIA07",
+      "Nu Al Andalusia": "https://buy.stripe.com/6oU4gzghS3Cv50wej4dIA08"
     };
     
     const paymentUrl = stripePaymentLinks[site.name];
@@ -63,7 +64,8 @@ const SiteModal = ({ site, onClose }) => {
       "TG Telecomm": "https://tgtelecomm.com/",
       "SoloLaunch": "https://sololaunch.app",
       "Paladin MMA": "https://paladinmma.com",
-      "Black Car Service Miami": "https://blackcarcervicemiami.com"
+      "Black Car Service Miami": "https://blackcarcervicemiami.com",
+      "Nu Al Andalusia": "https://nualandalusia.com/"
     };
     
     const siteUrl = siteUrlMap[site.name] || `https://${site.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.demo-site.com`;
@@ -146,6 +148,14 @@ const SiteModal = ({ site, onClose }) => {
             
             <p className="text-sm text-gray-500 mt-4 text-center font-body">
               Premium hosting included. Secure payments by Stripe. Cancel anytime.
+            </p>
+            
+            <p className="text-xs text-gray-400 mt-4 text-center font-body leading-relaxed">
+              By proceeding with payment through the Stripe payment link, you agree to our{" "}
+              <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">Terms and Conditions</a>,{" "}
+              <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">Terms of Service</a>, and{" "}
+              <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">Privacy Policy</a>. 
+              By paying, you acknowledge that we will provide all services described and are covered under these agreements.
             </p>
           </div>
         </div>

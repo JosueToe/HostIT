@@ -42,8 +42,15 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-600 mt-4 pt-4 text-center text-gray-400 text-xs">
-          <p>Built with ❤️ by <strong>Host-IT Professional Web Development Team</strong></p>
+        <div className="border-t border-gray-600 mt-4 pt-4">
+          <div className="flex flex-wrap justify-center gap-4 text-gray-400 text-xs mb-3">
+            <a href="/terms-and-conditions" className="hover:text-blue-400 transition-colors underline">Terms and Conditions</a>
+            <span className="text-gray-600">|</span>
+            <a href="/terms-of-service" className="hover:text-blue-400 transition-colors underline">Terms of Service</a>
+            <span className="text-gray-600">|</span>
+            <a href="/privacy-policy" className="hover:text-blue-400 transition-colors underline">Privacy Policy</a>
+          </div>
+          <p className="text-center text-gray-400 text-xs">Built with ❤️ by <strong>Host-IT Professional Web Development Team</strong></p>
         </div>
       </div>
     </footer>

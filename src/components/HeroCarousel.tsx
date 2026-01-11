@@ -45,6 +45,14 @@ const HeroCarousel = () => {
       description: "Your Ultimate Luxury Drive Awaits in Miami - Premium black car service for airport transfers, executive transport, and special occasions",
       image: "/lovable-uploads/black-car-service-miami-screenshot.png",
       alt: "Black Car Service Miami website - Premium black car service in Miami designed and hosted by Host-IT"
+    },
+    {
+      id: 'overlay6',
+      title: "Nu Al Andalusia",
+      url: "https://nualandalusia.com/",
+      description: "Innovative government services provider transforming the way clients do business with comprehensive solutions and consulting",
+      image: "/lovable-uploads/nu-al-andalusia-screenshot.png",
+      alt: "Nu Al Andalusia website - Government services provider designed and hosted by Host-IT"
     }
   ];
 

@@ -61,13 +61,13 @@ const portfolioSites = [
   },
   {
     id: 6,
-    name: "Urban Dental Care",
-    industry: "Healthcare",
-    thumbnail: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&h=300&fit=crop",
-    description: "Modern dental practice website with appointment booking system",
-    yearlyPrice: 140,
-    monthlyPrice: 11.67,
-    features: ["HIPAA Compliance", "Encrypted Hosting", "Automatic Backups", "Uptime Monitoring", "Technical Support"]
+    name: "Nu Al Andalusia",
+    industry: "Government Services",
+    thumbnail: "/lovable-uploads/nu-al-andalusia-screenshot.png",
+    description: "Innovative government services provider transforming the way clients do business with comprehensive solutions and consulting",
+    yearlyPrice: 275,
+    monthlyPrice: 22.92,
+    features: ["Domain Management", "Web Creation & Design", "Premium Hosting", "SSL Certificate", "Daily Backups", "24/7 Support", "CDN Performance"]
   }
 ];
 
@@ -172,6 +172,13 @@ const PortfolioGrid = () => {
                     Manage Subscription
                     <ExternalLink size={16} />
                   </Button>
+                  <p className="text-xs text-gray-400 text-center font-body leading-relaxed mt-2">
+                    By paying, you agree to our{" "}
+                    <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline" onClick={(e) => e.stopPropagation()}>Terms and Conditions</a>,{" "}
+                    <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline" onClick={(e) => e.stopPropagation()}>Terms of Service</a>, and{" "}
+                    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline" onClick={(e) => e.stopPropagation()}>Privacy Policy</a>. 
+                    All services described are covered.
+                  </p>
                 </div>
               </div>
             </motion.div>
