@@ -172,7 +172,7 @@ const PortfolioGrid = () => {
                     Manage Subscription
                     <ExternalLink size={16} />
                   </Button>
-                  <p className="text-xs text-gray-400 text-center font-body leading-relaxed mt-2">
+                  <p className="text-[9px] text-gray-400 text-center font-body leading-tight mt-2">
                     By paying, you agree to our{" "}
                     <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline" onClick={(e) => e.stopPropagation()}>Terms and Conditions</a>,{" "}
                     <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline" onClick={(e) => e.stopPropagation()}>Terms of Service</a>, and{" "}

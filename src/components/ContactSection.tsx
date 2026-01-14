@@ -15,17 +15,85 @@ const ContactSection = () => {
     name: '',
     email: '',
     company: '',
-    message: ''
+    message: '',
+    // Anti-spam: bots often fill hidden fields
+    website: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStartedAt] = useState(() => Date.now());
   const { toast } = useToast();
   const { ref, isInView } = useScrollAnimation(0.1);
+
+  const isLikelySpam = (data) => {
+    // 1) Honeypot filled => spam
+    if (data.website && data.website.trim().length > 0) return true;
+
+    // 2) Too fast (bot) => spam
+    const secondsOnForm = (Date.now() - formStartedAt) / 1000;
+    if (secondsOnForm < 3) return true;
+
+    // 3) Low-effort / gibberish checks
+    const name = (data.name || "").trim();
+    const email = (data.email || "").trim();
+    const message = (data.message || "").trim();
+
+    if (name.length < 2) return true;
+    if (message.length < 20) return true;
+
+    // Must contain at least a few spaces (reduces keyboard-mash)
+    const spaceCount = (message.match(/\s/g) || []).length;
+    if (spaceCount < 3) return true;
+
+    // Reject messages with extreme repetition (e.g., "aaaaaa" or "asdfasdfasdf")
+    const collapsed = message.toLowerCase().replace(/\s+/g, "");
+    const uniqueChars = new Set(collapsed.split("")).size;
+    if (collapsed.length >= 20 && uniqueChars <= 4) return true;
+    if (/([a-z0-9])\1{6,}/i.test(message)) return true;
+
+    // Email basic sanity (HTML5 input validates too, but we double-check)
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return true;
+
+    return false;
+  };
+
+  const isRateLimited = () => {
+    try {
+      const key = "hostit_contact_last_submit_at";
+      const last = Number(localStorage.getItem(key) || "0");
+      const now = Date.now();
+      // Allow 1 submission per 60 seconds per browser
+      if (last && now - last < 60_000) return true;
+      localStorage.setItem(key, String(now));
+      return false;
+    } catch {
+      // If storage is blocked, don't rate-limit
+      return false;
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
+      // Drop obvious spam before sending any email
+      if (isRateLimited() || isLikelySpam(formData)) {
+        // Pretend success to avoid giving bots feedback
+        toast({
+          title: "Message Received",
+          description: "Thanks! If you need immediate help, call us at 786-333-5331.",
+          variant: "default",
+        });
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: '',
+          website: ''
+        });
+        return;
+      }
+
       const success = await sendContactEmail(formData);
       
       if (success) {
@@ -40,7 +108,8 @@ const ContactSection = () => {
           name: '',
           email: '',
           company: '',
-          message: ''
+          message: '',
+          website: ''
         });
       } else {
         toast({
@@ -105,6 +174,19 @@ const ContactSection = () => {
           >
             <h3 className="text-2xl font-bold mb-6 text-white" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '700' }}>Send us a message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot field (hidden). If filled, we silently drop the submission. */}
+              <div className="hidden" aria-hidden="true">
+                <label>
+                  Website
+                  <input
+                    tabIndex={-1}
+                    autoComplete="off"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold mb-2 text-white" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', fontWeight: '600' }}>
@@ -116,6 +198,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     placeholder="John Doe"
                     required
+                    minLength={2}
                     className="bg-input border-border text-foreground placeholder:text-muted-foreground"
                   />
                 </div>
@@ -159,6 +242,7 @@ const ContactSection = () => {
                   placeholder="Tell us about your project, timeline, and any specific requirements..."
                   rows={5}
                   required
+                  minLength={20}
                   className="bg-input border-border text-foreground placeholder:text-muted-foreground"
                 />
               </div>

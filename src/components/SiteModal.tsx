@@ -150,7 +150,7 @@ const SiteModal = ({ site, onClose }) => {
               Premium hosting included. Secure payments by Stripe. Cancel anytime.
             </p>
             
-            <p className="text-xs text-gray-400 mt-4 text-center font-body leading-relaxed">
+            <p className="text-sm text-gray-500 mt-4 text-center font-body leading-relaxed">
               By proceeding with payment through the Stripe payment link, you agree to our{" "}
               <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">Terms and Conditions</a>,{" "}
               <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">Terms of Service</a>, and{" "}
