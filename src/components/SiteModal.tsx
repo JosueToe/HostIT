@@ -64,7 +64,7 @@ const SiteModal = ({ site, onClose }) => {
       "TG Telecomm": "https://tgtelecomm.com/",
       "SoloLaunch": "https://sololaunch.app",
       "Paladin MMA": "https://paladinmma.com",
-      "Black Car Service Miami": "https://blackcarcervicemiami.com",
+      "Black Car Service Miami": "https://bayharborblackcarservice.com",
       "Nu Al Andalusia": "https://nualandalusia.com/"
     };
     
