@@ -21,46 +21,6 @@ A modern web hosting portfolio website built with React, TypeScript, and Vite. H
 - **Payments**: Stripe integration
 - **Deployment**: Netlify-optimized
 
-## 🏃‍♂️ Quick Start
-
-1. **Clone and install dependencies:**
-   ```bash
-   git clone <repository-url>
-   cd HostIT
-   npm install
-   ```
-
-2. **Set up environment variables:**
-   ```bash
-   cp .env.example .env.local
-   # Edit .env.local with your actual values
-   ```
-
-3. **Start development server:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Build for production:**
-   ```bash
-   npm run build
-   ```
-
-## 🌐 Deployment to Netlify
-
-This project is optimized for Netlify deployment:
-
-1. **Connect your repository** to Netlify
-2. **Set build settings:**
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-3. **Add environment variables** in Netlify dashboard:
-   - `VITE_EMAILJS_SERVICE_ID` = service_l53wwur
-   - `VITE_EMAILJS_TEMPLATE_ID` = template_kbf2d6b
-   - `VITE_EMAILJS_PUBLIC_KEY` = aFMY4FzZzeI5jSpaj
-   - `VITE_CONTACT_EMAIL` = contact@Host-IT.app
-4. **Deploy!** - The `netlify.toml` configuration handles the rest
-
 ## 📁 Project Structure
 
 ```
@@ -87,12 +47,6 @@ The Stripe integration supports:
 - Multiple pricing tiers
 - Subscription management
 
-## 🎨 Customization
-
-- **Branding**: Update colors and fonts in `src/index.css`
-- **Content**: Modify portfolio items in `src/components/PortfolioGrid.tsx`
-- **Styling**: Customize with Tailwind classes
-- **Components**: Extend with additional shadcn/ui components
 
 ## 📞 Support
 
